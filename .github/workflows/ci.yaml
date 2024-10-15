@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: C++ CI
 
 on:
   push:
@@ -10,32 +10,37 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Setup CMake
-        uses: jwlawson/actions-setup-cmake@v1
-        with:
-          cmake-version: '3.21.2'  # Assure-toi que cette version est installée
+    - name: Set up MSBuild
+      uses: microsoft/setup-msbuild@v1.1.2
 
-      - name: Clean and Create Build Directory
-        run: |
-          if exist build (
-            rmdir /s /q build
-          )
-          mkdir build
+    - name: Set up Visual Studio 2022
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '6.0.x'
 
-      - name: Configure Project
-        run: |
-          cd build
-          cmake -G "Visual Studio 17 2022" -A Win64 ..  # Assure-toi que Win64 est correct
+    - name: Install vcpkg
+      run: |
+        git clone https://github.com/microsoft/vcpkg.git
+        ./vcpkg/bootstrap-vcpkg.bat
 
-      - name: Build Project
-        run: |
-          cd build
-          cmake --build . --config Release  # ou Debug selon ce que tu veux
+    - name: Install GoogleTest
+      run: |
+        ./vcpkg/vcpkg install gtest
 
-      - name: Run Tests
-        run: |
-          cd build
-          ctest --output-on-failure  # Exécute les tests
+    - name: Build Solution
+      run: |
+        msbuild DataQuest.sln /p:Configuration=Debug /p:Platform=x64
+
+    - name: Run Unit Tests
+      run: |
+        .\path\to\test\executable\tests.exe
+
+    - name: Upload test results
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: test-results
+        path: path/to/test/results
