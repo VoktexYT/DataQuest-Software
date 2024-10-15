@@ -22,11 +22,11 @@ jobs:
         run: |
           mkdir build
           cd build
-          cmake -G "Visual Studio 17 2022" -A Win64 -DCMAKE_CONFIGURATION_TYPES="Debug;Release" ..
+          cmake -G "Visual Studio 17 2022" -A Win64 ..  # Supprime -DCMAKE_CONFIGURATION_TYPES
 
       - name: Build Project
         run: |
-          cmake --build . --config Release  # ou Debug selon ce que tu veux
+          cmake --build . --config Release  # Changez en Debug si nécessaire
 
       - name: Run Tests
         run: |

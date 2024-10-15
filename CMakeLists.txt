@@ -8,13 +8,12 @@ project(DataQuest)
 set(CMAKE_CXX_STANDARD 17)
 
 # Ajouter les fichiers sources du projet
-add_executable(DataQuest ./WebscrapingClient/WebscrapingClient.cpp)  # Vérifie le chemin
+add_executable(DataQuest ./WebscrapingClient/WebscrapingClient.cpp)
 
 # =============================================
 # Section pour les tests avec Google Test
 # =============================================
 
-# Ajoute Google Test
 enable_testing()  # Active les tests dans CMake
 
 # Trouver la bibliothèque Google Test
@@ -24,7 +23,7 @@ if(NOT GTEST_FOUND)
 endif()
 
 # Ajouter l'exécutable de test
-add_executable(DataQuestTest ./WebscrapingClient/test.cpp)  # Vérifie le chemin
+add_executable(DataQuestTest ./WebscrapingClient/test.cpp)
 
 # Lier Google Test à l'exécutable de test
 target_link_libraries(DataQuestTest PRIVATE GTest::GTest GTest::Main)
