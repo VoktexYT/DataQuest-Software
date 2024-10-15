@@ -11,6 +11,8 @@ int main()
 {
 	setlocale(LC_ALL, "");
 
+	std::cout << "-- #using WebscrapingLibrary --" << std::endl;
+
 	std::string entreeURL;
 	char fonctionBase;
 	std::cout << "Entrez l'URL d'un site Web sous ce format : www.example.com\n\nVous: ";
