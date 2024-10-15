@@ -1,0 +1,30 @@
+name: CI Pipeline test
+
+on:
+    push:
+        branch:
+            - dev-webscraping
+
+jobs:
+    build:
+        runs-on: windows-lastest
+        
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v2
+
+            - name: Setup Cmake
+              uses: jwlawson/actions-setup-cmake@v1
+              with:
+                cmake-version: '3.21.2'
+            
+            - name: Configure Project
+              run: |
+                mkdir build
+                cd build
+                cmake -G "Visual Studio 17.11.4 2022"
+            
+            - name: Build Project
+              run: |
+                cd build
+                ctest --output-on-fealure # Execute tests and display result if echec

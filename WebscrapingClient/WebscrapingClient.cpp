@@ -7,7 +7,7 @@
 #pragma comment(lib, "winhttp.lib")
 
 
-int main()
+int main_()
 {
 	setlocale(LC_ALL, "");
 

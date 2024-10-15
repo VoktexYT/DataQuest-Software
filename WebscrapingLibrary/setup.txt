@@ -1,0 +1,49 @@
+﻿Télécharger Google Test :
+
+    Clone le dépôt Google Test :
+
+    bash
+
+    git clone https://github.com/google/googletest.git
+
+Compiler Google Test :
+
+    Ouvre le terminal et navigue dans le répertoire de Google Test :
+
+    bash
+
+cd googletest
+
+Crée un répertoire de build et compile-le :
+
+bash
+
+        mkdir build
+        cd build
+        cmake ..
+        cmake --build . --config Release
+
+        Les fichiers .a et .lib de Google Test seront créés dans le dossier lib.
+
+    Copier les Fichiers :
+        Copie les fichiers gtest.lib et gtest_main.lib dans un répertoire approprié, par exemple dans C:\libs\googletest.
+
+Étape 2: Configurer Visual Studio
+
+    Ouvrir ou Créer un Projet dans Visual Studio :
+        Lance Visual Studio et ouvre ton projet ou crée un nouveau projet.
+
+    Ajouter les Chemins d'Inclusion :
+        Fais un clic droit sur ton projet dans l'Explorateur de solutions et sélectionne Propriétés.
+        Dans C/C++ > Général > Répertoires d'inclusion, ajoute le chemin vers le dossier include de Google Test (par exemple C:\libs\googletest\include).
+
+    Ajouter les Chemins de Bibliothèque :
+        Dans Linker > Général > Répertoires de bibliothèques, ajoute le chemin vers le dossier contenant les fichiers .lib de Google Test (par exemple C:\libs\googletest).
+
+    Lier les Bibliothèques :
+        Dans Linker > Input > Dépendances supplémentaires, ajoute les fichiers suivants :
+
+        vbnet
+
+gtest.lib
+gtest_main.lib
