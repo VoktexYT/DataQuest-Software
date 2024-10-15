@@ -45,7 +45,10 @@ jobs:
 
     - name: Run Unit Tests
       run: |
-        .\path\to\test\executable\tests.exe
+        cd WebscrapingClient
+        msbuild WebscrapingClient.vcxproj /p:Configuration=Debug /p:Platform=x64
+        msbuild WebscrapingClient.vcxproj /p:Configuration=Debug /p:Platform=x64
+        x64\Debug\WebscrapingClient.exe
 
     - name: Upload test results
       if: always()
