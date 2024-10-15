@@ -16,17 +16,17 @@ jobs:
       - name: Setup CMake
         uses: jwlawson/actions-setup-cmake@v1
         with:
-          cmake-version: '3.21.2'  # Remplace par ta version de CMake
+          cmake-version: '3.21.2'  # Assure-toi que cette version est installée
 
       - name: Configure Project
         run: |
           mkdir build
           cd build
-          cmake -G "Visual Studio 17 2022" -A Win64 ..  # Supprime -DCMAKE_CONFIGURATION_TYPES
+          cmake -G "Visual Studio 17 2022" -A Win64 ..
 
       - name: Build Project
         run: |
-          cmake --build . --config Release  # Changez en Debug si nécessaire
+          cmake --build . --config Release  # Spécifie la configuration ici
 
       - name: Run Tests
         run: |
