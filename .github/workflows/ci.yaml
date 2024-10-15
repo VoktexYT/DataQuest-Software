@@ -30,6 +30,9 @@ jobs:
       run: |
         ./vcpkg/vcpkg install gtest
 
+    - name: List files
+      run: dir
+
     - name: Build Solution
       run: |
         msbuild DataQuest.sln /p:Configuration=Debug /p:Platform=x64
