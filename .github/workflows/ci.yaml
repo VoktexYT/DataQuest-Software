@@ -20,7 +20,7 @@ jobs:
 
       - name: Clean and Create Build Directory
         run: |
-          if exist build rmdir /s /q build
+          if exist build (rmdir /s /q build)
           mkdir build
 
       - name: Configure Project
