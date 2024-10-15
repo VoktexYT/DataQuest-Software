@@ -2,13 +2,13 @@
 cmake_minimum_required(VERSION 3.10)
 
 # Définit le nom du projet
-project(DataQuest)  # Remplace "DataQuest" par le nom de ton projet
+project(DataQuest)
 
 # Définit le standard C++
-set(CMAKE_CXX_STANDARD 17)  # Change en fonction de ta version C++
+set(CMAKE_CXX_STANDARD 17)
 
 # Ajouter les fichiers sources du projet
-add_executable(DataQuest ./WebscrapingClient/WebscrapingClient.cpp)  # Remplace par tes fichiers sources
+add_executable(DataQuest ./WebscrapingClient/WebscrapingClient.cpp)  # Vérifie le chemin
 
 # =============================================
 # Section pour les tests avec Google Test
@@ -24,10 +24,10 @@ if(NOT GTEST_FOUND)
 endif()
 
 # Ajouter l'exécutable de test
-add_executable(DataQuestTest ./WebscrapingClient/test.cpp)  # Remplace par le chemin de ton fichier de test
+add_executable(DataQuestTest ./WebscrapingClient/test.cpp)  # Vérifie le chemin
 
 # Lier Google Test à l'exécutable de test
 target_link_libraries(DataQuestTest PRIVATE GTest::GTest GTest::Main)
 
 # Ajouter le test à CMake
-add_test(NAME HtmlStructureTest COMMAND DataQuestTest)  # Change "MyTests" si nécessaire
+add_test(NAME HtmlStructureTest COMMAND DataQuestTest)
