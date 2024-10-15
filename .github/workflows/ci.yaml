@@ -35,7 +35,7 @@ jobs:
 
     - name: Build Solution
       run: |
-        msbuild DataQuest.sln /p:Configuration=Debug /p:Platform=x64
+        msbuild ./DateQuest.sln /p:Configuration=Debug /p:Platform=x64
 
     - name: Run Unit Tests
       run: |
