@@ -33,6 +33,12 @@ jobs:
     - name: List files
       run: dir
 
+    - name: Install NuGet
+      run: choco install nuget.commandline
+
+    - name: Restore NuGet packages
+      run: nuget restore ./DateQuest.sln
+
     - name: Build Solution
       run: |
         msbuild ./DateQuest.sln /p:Configuration=Debug /p:Platform=x64
